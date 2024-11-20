@@ -154,4 +154,5 @@ class OrderViewModel(supabaseClient: SupabaseClient) : ViewModel() {
             postgrest.from(DatabaseConstants.TABLE_ORDERS).insert(order)
         }
     }
+
 }

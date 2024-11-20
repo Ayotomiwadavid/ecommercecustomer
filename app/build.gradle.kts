@@ -87,6 +87,7 @@ dependencies {
     implementation(libs.realtime.kt)
 
     implementation(libs.coil.compose)
+    implementation(libs.androidx.runtime.livedata)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -94,4 +95,15 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    //Web Socket
+    implementation("org.java-websocket:Java-WebSocket:1.5.2")
+    implementation("io.github.aakira:napier:2.6.1")
+// Core Ktor dependencies
+    implementation("io.ktor:ktor-client-core:2.3.4")
+    implementation("io.ktor:ktor-client-cio:2.3.4") // CIO engine for HTTP and WebSocket
+    implementation("io.ktor:ktor-client-websockets:2.3.4") // WebSocket support
+    implementation("io.ktor:ktor-client-content-negotiation:2.3.4") // JSON serialization
+    implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.4") // Kotlinx serialization support
+
 }

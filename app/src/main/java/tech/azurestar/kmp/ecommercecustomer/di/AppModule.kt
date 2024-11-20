@@ -1,8 +1,8 @@
 package tech.azurestar.kmp.ecommercecustomer.di
 
+import io.github.jan.supabase.auth.Auth
 import io.github.jan.supabase.coil.Coil3Integration
 import io.github.jan.supabase.createSupabaseClient
-import io.github.jan.supabase.auth.Auth
 import io.github.jan.supabase.postgrest.Postgrest
 import io.github.jan.supabase.realtime.Realtime
 import io.github.jan.supabase.serializer.KotlinXSerializer
@@ -14,9 +14,10 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import tech.azurestar.kmp.ecommercecustomer.SUPABASE_KEY
 import tech.azurestar.kmp.ecommercecustomer.SUPABASE_URL
-import tech.azurestar.kmp.ecommercecustomer.vm.DBViewModel
 import tech.azurestar.kmp.ecommercecustomer.vm.AuthViewModel
 import tech.azurestar.kmp.ecommercecustomer.vm.CheckoutViewModel
+import tech.azurestar.kmp.ecommercecustomer.vm.DBViewModel
+import tech.azurestar.kmp.ecommercecustomer.vm.InvoiceViewModel
 import tech.azurestar.kmp.ecommercecustomer.vm.OrderViewModel
 import tech.azurestar.kmp.ecommercecustomer.vm.StorageViewModel
 
@@ -27,7 +28,7 @@ val appModule = module {
             supabaseUrl = SUPABASE_URL,
             supabaseKey = SUPABASE_KEY
         ) {
-            defaultSerializer = KotlinXSerializer( Json {
+            defaultSerializer = KotlinXSerializer(Json {
                 namingStrategy = JsonNamingStrategy.SnakeCase
             })
             install(Postgrest)
@@ -37,9 +38,12 @@ val appModule = module {
             install(Realtime)
         }
     }
-    single <DBViewModel> { DBViewModel(get(), get()) }
+
+
+    single<DBViewModel> { DBViewModel(get(), get()) }
     single<AuthViewModel> { AuthViewModel(get()) }
     single { StorageViewModel(get(), androidContext()) }
     single { OrderViewModel(get()) }
+    single { InvoiceViewModel() }
     single { CheckoutViewModel() }
 }

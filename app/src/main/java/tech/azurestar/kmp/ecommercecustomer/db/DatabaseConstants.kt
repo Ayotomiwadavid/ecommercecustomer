@@ -10,6 +10,7 @@ object DatabaseConstants {
     const val TABLE_ITEMS = "items"
     const val TABLE_ORDERS = "orders"
     const val TABLE_ORDER_ITEMS = "order_items"
+    const val TABLE_PAYMENT_NOTIFICATION = "payment-notification"
     const val TABLE_SELLERS = "sellers"
 
     // Address Columns
